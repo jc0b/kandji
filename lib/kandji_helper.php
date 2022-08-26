@@ -66,7 +66,7 @@ class Kandji_helper
     public function get_kandji_url($url)
     {
 
-        $kandji_api_key = conf('kandji_api_key')
+        $kandji_api_key = conf('kandji_api_key');
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
