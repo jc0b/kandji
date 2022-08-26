@@ -20,8 +20,7 @@ class Kandji_model extends \Model {
         $this->rs['blueprint_id'] = '';
         $this->rs['blueprint_name'] = '';
         $this->rs['realname'] = '';
-        $this->rs['email_address'] = ';'
-    }
+        $this->rs['email_address'] = '';
         
 
         if ($serial) {
