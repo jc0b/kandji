@@ -426,7 +426,7 @@ $(document).on('appReady', function(e, lang) {
             var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
             
             // Generate buttons and tabs
-            $('#kandji_view_in').html('<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+data['kandji_id']+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'"></a>'); // View in Kandji button
+            $('#kandji_view_in').html('<a data-i18n-"kandji.view_in_kandji" class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+data['kandji_id']+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">View in Kandji</a>'); // View in Kandji button
             $('#kandji_general_button').html('<i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;'+i18n.t("kandji.general")); // General tab
             $('#kandji_hardware_button').html('<i class="fa fa-desktop"></i>&nbsp;&nbsp;&nbsp;'+i18n.t("hardware.hardware")); // Hardware tab
             $('#kandji_operatingsystem_button').html('<i class="fa fa-apple"></i>&nbsp;&nbsp;&nbsp;'+i18n.t("kandji.operatingsystem")); // Operating System tab
