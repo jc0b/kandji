@@ -2,7 +2,7 @@
 	<div class="panel panel-default" id="kandji-checkin-widget">
 		<div class="panel-heading" data-container="body">
 			<h3 class="panel-title"><i class="fa fa-hand-peace-o"></i>
-			    <span data-i18n="kandji.last_contact_time_epoch"></span>
+			    <span data-i18n="kandji.last_check_in"></span>
 			    <list-link data-url="/show/listing/kandji/kandji"></list-link>
 			</h3>
 		</div>
