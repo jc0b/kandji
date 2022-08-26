@@ -63,7 +63,7 @@ class Kandji_helper
      * @author n8felton, tweaked for Jamf by Tuxudo, then tweaked for Kandji by jc0b
      *
      **/
-    public function get_kandji_url($url)
+    public function send_kandji_query($url)
     {
 
         $kandji_api_key = conf('kandji_api_key');
