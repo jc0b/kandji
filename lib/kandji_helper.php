@@ -42,9 +42,9 @@ class Kandji_helper
         $Kandji_model->asset_tag = $json[0]->asset_tag;
         $Kandji_model->blueprint_id = $json[0]->blueprint_id;
         $Kandji_model->blueprint_name = $json[0]->blueprint_name;
-        $Kandji_model->last_check_in = convert_time_to_epoch($json[0]->last_check_in);
-        $Kandji_model->last_enrollment = convert_time_to_epoch($json[0]->last_enrollment);
-        $Kandji_model->first_enrollment = convert_time_to_epoch($json[0]->first_enrollment);
+        $Kandji_model->last_check_in = $this->convert_time_to_epoch($json[0]->last_check_in);
+        $Kandji_model->last_enrollment = $this->convert_time_to_epoch($json[0]->last_enrollment);
+        $Kandji_model->first_enrollment = $this->convert_time_to_epoch($json[0]->first_enrollment);
 
         // Location section
         $Kandji_model->realname = $json[0]->user->name;
@@ -95,7 +95,7 @@ class Kandji_helper
      * @author jc0b
      * 
      **/
-    public function convert_time_to_epoch($date)
+    private function convert_time_to_epoch($date)
     {
         $dt = new DateTime($date);
         return $dt->getTimestamp();
