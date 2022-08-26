@@ -24,18 +24,15 @@ $(document).on('appReady', function(e, lang) {
                 // Generate rows from data
                 var rows = ''
                 for (var prop in d){
-                    // Skip skipThese
-                    if(skipThese.indexOf(prop) == -1){
-                        if (d[prop] == '' && d[prop] !== 0){
-                           // Do nothing for empty values to blank them
+                    if (d[prop] == '' && d[prop] !== 0){
+                       // Do nothing for empty values to blank them
+                    
+                    } else if(prop.indexOf('kandji_id') > -1 || prop == 'name' || prop == 'kandji_agent_version' || prop == 'asset_tag' || prop == 'last_check_in' || prop == 'last_enrollment' || prop == 'first_enrollment' || prop == 'blueprint_id' || prop == 'blueprint_name' || prop == 'realname' || prop == 'email_address'){
+                       rows = rows + '<tr><th>'+i18n.t('kandji.'+prop)+'</th><td>'+fileSize(d[prop], 2)+'</td></tr>';
                         
-                        } else if(prop.indexOf('kandji_id') > -1 || prop == 'name' || prop == 'kandji_agent_version' || prop == 'asset_tag' || prop == 'last_check_in' || prop == 'last_enrollment' || prop == 'first_enrollment' || prop == 'blueprint_id' || prop == 'blueprint_name' || prop == 'realname' || prop == 'email_address'){
-                           rows = rows + '<tr><th>'+i18n.t('kandji.'+prop)+'</th><td>'+fileSize(d[prop], 2)+'</td></tr>';
-                            
-                        } else {
-                           rows = rows + '<tr><th>'+i18n.t('kandji.'+prop)+'</th><td>'+d[prop]+'</td></tr>';
-                        }
-                    }
+                    } else {
+                       rows = rows + '<tr><th>'+i18n.t('kandji.'+prop)+'</th><td>'+d[prop]+'</td></tr>';
+                    }   
                 }
                 $('#kandji-tab')
                     .append($('<h4>')
