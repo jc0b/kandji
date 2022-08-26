@@ -24,6 +24,7 @@ $(document).on('appReady', function(e, lang) {
                 // Generate rows from data
                 var rows = ''
                 for (var prop in d){
+                    console.log(prop)
                     if (d[prop] == '' && d[prop] !== 0){
                        // Do nothing for empty values to blank them
                     
