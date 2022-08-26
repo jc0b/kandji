@@ -1,0 +1,8 @@
+{
+    "name": "jc0b/kandji",
+    "description": "Kandji module for munkireport.",
+    "license": "MIT",
+    "require": {
+        "php":"^7.0"
+    }
+}
