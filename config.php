@@ -19,4 +19,5 @@ return [
   'kandji_enable' => env('KANDJI_ENABLE', false),
   'kandji_api_key' => env('KANDJI_API_KEY', "")
   'kandji_api_endpoint' => env('KANDJI_API_ENDPOINT', ""),
+  'kandji_tenant_address' => env('KANDJI_TENANT_ADDRESS', ""),
 ];

@@ -7,7 +7,7 @@ if [ "$1" = 'manualcheck' ]; then
 	exit 0
 fi
 
-# Check if Jamf binary is installed
+# Check if Kandji binary is installed
 if [ ! -e "/usr/local/bin/kandji" ] && [ ! -e "/Library/Kandji/Kandji Agent.app/Contents/MacOS/kandji-cli" ]; then
     echo "The Kandji binary doesn't appear to be installed. Is it enrolled?"
     exit 0

@@ -34,7 +34,7 @@ class Kandji_helper
             return $error;
         }
 
-        // Transpose Jamf API output into Jamf model
+        // Transpose Kandji API output into Kandji model
         // General section 
         $Kandji_model->kandji_id = $json[0]->device_id;
         $Kandji_model->name = $json[0]->device_name;
@@ -60,7 +60,7 @@ class Kandji_helper
      * Retrieve url
      *
      * @return JSON object if successful, FALSE if failed
-     * @author n8felton, tweaked for Jamf by Tuxudo
+     * @author n8felton, tweaked for Jamf by Tuxudo, then tweaked for Kandji by jc0b
      *
      **/
     public function get_kandji_url($url)
@@ -71,8 +71,6 @@ class Kandji_helper
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout of 10 seconds
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $jamf_verify_ssl);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $jamf_verify_ssl);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Accept: application/json', 'Authorization: Bearer '.$kandji_api_key));
 
         $return = curl_exec($ch);
@@ -89,43 +87,6 @@ class Kandji_helper
         return $return;
     }
 
-    /**
-     * Retrieve url as XML
-     *
-     * @return XML object if successful, FALSE if failed
-     * @author n8felton, tweaked for Jamf by Tuxudo
-     *
-     **/
-    public function get_jamf_url_xml($url)
-    {
-        $jamf_verify_ssl = conf('jamf_verify_ssl');
-        if(conf('jamf_verify_ssl') == FALSE || $jamf_verify_ssl == "false" || $jamf_verify_ssl == "FALSE" || $jamf_verify_ssl == "0" || $jamf_verify_ssl == 0){
-            $jamf_verify_ssl = 0;
-        } else {
-            $jamf_verify_ssl = 1;
-        }
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout of 10 seconds
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, $jamf_verify_ssl);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $jamf_verify_ssl);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array ('Accept: document/xml', 'Authorization: Bearer '.$this->get_jamf_bearer_token()));
-
-        $return = curl_exec($ch);
-        
-        // Check for timeout
-        if (curl_errno($ch) && curl_errno($ch) == 28) {
-            error_log("MunkiReport:- Jamf server timed out for - ".$url, 0);
-            return false;
-        } else if (curl_errno($ch)) {
-            error_log("MunkiReport:- There was an error getting data from the Jamf server: ".curl_errno($ch)." - ".$url, 0);
-            return false;
-        }
-
-        return $return;
-    }
 
     /**
      * Convert Kandji timestamps to epochs
