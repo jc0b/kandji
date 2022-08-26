@@ -15,7 +15,7 @@ new Kandji_model;
           <tr>
             <th data-i18n="listing.computername" data-colname='machine.computer_name'></th>
             <th data-i18n="serial" data-colname='reportdata.serial_number'></th>
-            <th data-i18n="kandji.kandji_version" data-colname='kandji.kandji_version'></th>
+            <th data-i18n="kandji.kandji_agent_version" data-colname='kandji.kandji_agent_version'></th>
             <th data-i18n="kandji.realname" data-colname='kandji.realname'></th>
             <th data-i18n="kandji.last_check_in" data-colname='kandji.last_check_in'></th>
             <th data-i18n="kandji.last_enrollment" data-colname='kandji.last_enrollment'></th>

@@ -6,7 +6,7 @@
 
 <div class="container">
 	<div class="row">
-		<?php $widget->view($this, 'kandji_version'); ?>
+		<?php $widget->view($this, 'kandji_agent_version'); ?>
 		<?php $widget->view($this, 'kandji_checkin'); ?>
 	</div>
 </div>  <!-- /container -->

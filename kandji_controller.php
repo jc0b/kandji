@@ -39,18 +39,18 @@ class kandji_controller extends Module_controller
      **/
     public function get_kandji_version()
     {
-        $sql = "SELECT COUNT(CASE WHEN kandji_version <> '' AND kandji_version IS NOT NULL THEN 1 END) AS count, kandji_version 
+        $sql = "SELECT COUNT(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END) AS count, kandji_agent_version 
                 FROM kandji
                 LEFT JOIN reportdata USING (serial_number)
                 ".get_machine_group_filter()."
-                GROUP BY kandji_version
+                GROUP BY kandji_agent_version
                 ORDER BY count DESC";
 
         $out = [];
         $queryobj = new Kandji_model;
         foreach ($queryobj->query($sql) as $obj) {
             if ("$obj->count" !== "0") {
-                $obj->kandji_version = $obj->kandji_version ? $obj->kandji_version : 'Unknown';
+                $obj->kandji_agent_version = $obj->kandji_agent_version ? $obj->kandji_agent_version : 'Unknown';
                 $out[] = $obj;
             }
         }

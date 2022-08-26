@@ -8,7 +8,7 @@ return array(
         'kandji' => array('view' => 'kandji_listing', 'i18n' => 'kandji.title'),
     ),
     'widgets' => array(
-        'kandji_version' => array('view' => 'kandji_version_widget'),
+        'kandji_agent_version' => array('view' => 'kandji_agent_version_widget'),
         'kandji_checkin' => array('view' => 'kandji_checkin_widget'),
     ),
     'admin_pages' => array(
