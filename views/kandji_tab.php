@@ -54,7 +54,7 @@
 $(document).on('appReady', function(){
     $.getJSON( appUrl + '/module/kandji/get_data/' + serialNumber, function(data) {
         // Check if we have data
-        if( ! data[0]['kandji_id']){
+        if( ! data['kandji_id']){
             $('#kandji-msg').text(i18n.t('no_data'));
         }else{
 
