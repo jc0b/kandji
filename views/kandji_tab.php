@@ -52,6 +52,7 @@ $(document).on('appReady', function(e, lang) {
         }
 
 	});
+});
     
 // Make button groups active
 $(".btn-group > .btn").click(function(){
