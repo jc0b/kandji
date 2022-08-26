@@ -95,7 +95,7 @@ class Kandji_helper
      * @author jc0b
      * 
      **/
-    private function convert_time_to_epoch($date)
+    public function convert_time_to_epoch($date)
     {
         $dt = new DateTime($date);
         return $dt->getTimestamp();
