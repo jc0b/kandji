@@ -97,7 +97,7 @@ class Kandji_helper
      **/
     private function convert_time_to_epoch($date)
     {
-        $dt = new DateTime($date);
+        $dt = new \DateTime($date);
         return $dt->getTimestamp();
     }
 }
