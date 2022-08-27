@@ -18,6 +18,8 @@ KANDJI_API_KEY="some_key_here"
 KANDJI_TENANT_ADDRESS="https://domain.kandji.io/"
 ```
 
+The Kandji API key requires only one permission: GET on Device List (`/devices`).
+
 Table Schema
 ---
 * increments - id
