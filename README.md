@@ -3,7 +3,7 @@ Kandji module
 
 Kandji integration for MunkiReport. Based heavily on [tuxudo/jamf](https://github.com/tuxudo/jamf), which was a massive influence and motivation to write this module.
 
-The Kandji Admin tab within the Admin dropdown menu allows an administrator to check if MunkiReport is able to access their Kandji instance, as well as some details as to how it is configured. There is the option to manually pull data for all Macs within MunkiReport.
+The Kandji Admin tab within the Admin dropdown menu allows an administrator to check if MunkiReport is able to access their Kandji instance, as well as some details as to how it is configured. There is the option to manually pull data for all Macs within MunkiReport. 
 
 The php-curl module is required for use with this module. You can install it on Ubuntu/Debian with `sudo apt-get install php-curl`
 
