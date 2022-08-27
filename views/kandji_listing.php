@@ -68,7 +68,7 @@ new Kandji_model;
 	        	var sn=$('td:eq(1)', nRow).html();
 	        	var link = mr.getClientDetailLink(name, sn, '#tab_kandji-tab');
 	        	$('td:eq(0)', nRow).html(link);
-
+                console.log(nRow)
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
 	        	var kandji_id=$('td:eq(2)', nRow).html();
