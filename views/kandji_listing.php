@@ -72,22 +72,18 @@ new Kandji_model;
                 console.log(nRow);
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
-	        	var kandji_id=$('td:eq(2)', nRow).html();
+	        	var kandji_id=$('td:eq(6)', nRow).html();
                 var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
 	        	var link = '<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+kandji_id+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">'+serial+'</a>';
 	        	$('td:eq(1)', nRow).html(link);
 
 	        	// Format last_check_in timestamp
-	        	var date = parseInt($('td:eq(6)', nRow).html());
-	        	$('td:eq(6)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	var date = parseInt($('td:eq(4)', nRow).html());
+	        	$('td:eq(4)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 
 	        	// Format last_enrollment timestamp
-	        	var date = parseInt($('td:eq(7)', nRow).html());
-	        	$('td:eq(7)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
-
-	        	// Format first_enrollment timestamp
-	        	var date = parseInt($('td:eq(8)', nRow).html());
-	        	$('td:eq(8)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	var date = parseInt($('td:eq(5)', nRow).html());
+	        	$('td:eq(5)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 	        }
 	    });
 	});
