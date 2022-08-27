@@ -71,22 +71,22 @@ new Kandji_model;
 
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
-	        	var kandji_id=$('td:eq(20)', nRow).html();
+	        	var kandji_id=$('td:eq(2)', nRow).html();
                 var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
 	        	var link = '<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+kandji_id+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">'+serial+'</a>';
 	        	$('td:eq(1)', nRow).html(link);
 
-	        	// Format last_contact_time_epoch timestamp
-	        	var date = parseInt($('td:eq(17)', nRow).html());
-	        	$('td:eq(17)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	// Format last_check_in timestamp
+	        	var date = parseInt($('td:eq(6)', nRow).html());
+	        	$('td:eq(6)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 
-	        	// Format last_enrolled_date_epoch timestamp
-	        	var date = parseInt($('td:eq(18)', nRow).html());
-	        	$('td:eq(18)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	// Format last_enrollment timestamp
+	        	var date = parseInt($('td:eq(7)', nRow).html());
+	        	$('td:eq(7)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 
-	        	// Format report_date_epoch timestamp
-	        	var date = parseInt($('td:eq(19)', nRow).html());
-	        	$('td:eq(19)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	// Format first_enrollment timestamp
+	        	var date = parseInt($('td:eq(8)', nRow).html());
+	        	$('td:eq(8)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 	        }
 	    });
 	});
