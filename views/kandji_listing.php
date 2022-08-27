@@ -63,7 +63,6 @@ new Kandji_model;
             buttons: mr.dt.buttons,
 	        createdRow: function( nRow, aData, iDataIndex ) {
 	        	// Update name in first column to link
-                console.log(data);
                 console.log(aData);
 	        	var name=$('td:eq(0)', nRow).html();
 	        	if(name == ''){name = "No Name"};
