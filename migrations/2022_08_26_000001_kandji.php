@@ -33,13 +33,7 @@ class Kandji extends Migration
             $table->index('kandji_id');
             $table->index('name');
             $table->index('kandji_agent_version');
-            $table->index('asset_tag');
-            $table->index('last_check_in');
-            $table->index('last_enrollment');
-            $table->index('first_enrollment');
             $table->index('blueprint_id');
-            $table->index('blueprint_name');
-            $table->index('realname');
             $table->index('email_address');
         });
     }
