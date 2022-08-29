@@ -22,16 +22,16 @@ The Kandji API key requires only one permission: GET on Device List (`/devices`)
 
 Table Schema
 ---
-* increments - id
-* string - serial_number
-* integer - kandji_id
-* string - name
-* string - kandji_agent_version
-* text - asset_tag
-* bigInteger - last_check_in
-* bigInteger - last_enrollment
-* bigInteger - first_enrollment
-* string - blueprint_id
-* text - blueprint_name
-* text - realname
-* string - email_address
+* id - increments - Incremental value used by MunkiReport
+* serial_number - string - Serial number of Mac
+* kandji_id - integer - Kandji ID of Mac
+* name - string - Name of Mac in Kandji
+* kandji_agent_version - string - Kandji agent version
+* asset_tag - text - Kandji asset tag
+* last_check_in - bigInteger - Timestamp of last check in to Kandji
+* last_enrollment - bigInteger - Timestamp of last enrollment with Kandji
+* first_enrollment - bigInteger - Timestamp of first enrollment with Kandji
+* blueprint_id - string - Kandji blueprint ID
+* blueprint_name - text - Name of Kandji blueprint ID
+* realname - text - Real name of Kandji blueprint
+* email_address - string - Email address of Mac's assigned user in Kandji
