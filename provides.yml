@@ -1,0 +1,21 @@
+admin_pages:
+    admin:
+        view: kandji_admin
+        i18n: kandji.title
+client_tabs:
+    kandji-tab:
+        view: kandji_tab
+        i18n: kandji.title
+listings:
+    kandji:
+        view: kandji_listing
+        i18n: kandji.title
+reports:
+    kandji:
+        view: kandji_report
+        i18n: kandji.report
+widgets:
+    kandji_agent_version:
+        view: kandji_agent_version_widget
+    kandji_checkin:
+        view: kandji_checkin_widget
