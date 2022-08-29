@@ -16,5 +16,6 @@ if [[ ${CHECK} == "0" ]] ; then
     exit 0
 else
     # Store date in file to trigger Kandji lookup
+    DIR=$(dirname $0)
     date > "$DIR/cache/kandji.txt"
 fi
