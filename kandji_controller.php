@@ -46,23 +46,15 @@ class kandji_controller extends Module_controller
                 GROUP BY kandji_agent_version
                 ORDER BY count DESC";
 
-        $out = [];
         $queryobj = new Kandji_model;
-        foreach ($queryobj->query($sql) as $obj) {
-            if ("$obj->count" !== "0") {
-                $obj->kandji_agent_version = $obj->kandji_agent_version ? $obj->kandji_agent_version : 'Unknown';
-                $out[] = $obj;
-            }
-        }
-
-        jsonView($out);
+        jsonView($queryobj->query($sql));
     }
 
 
     /**
      * REST API for retrieving last checkin data for widget
-     * @tuxudo
      *
+     * @author tuxudo
      **/
      public function get_last_checkin()
      {        

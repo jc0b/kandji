@@ -1,0 +1,8 @@
+type: scrollbox
+widget_id: kandji_agent_version-widget
+api_url: /module/kandji/get_kandji_version
+i18n_title: kandji.kandji_agent_version
+icon: fa-arrows-alt
+listing_link: /show/listing/kandji/kandji
+search_key: kandji_agent_version
+i18n_empty_result: no_data
