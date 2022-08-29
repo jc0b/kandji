@@ -63,13 +63,11 @@ new Kandji_model;
             buttons: mr.dt.buttons,
 	        createdRow: function( nRow, aData, iDataIndex ) {
 	        	// Update name in first column to link
-                console.log(aData);
 	        	var name=$('td:eq(0)', nRow).html();
 	        	if(name == ''){name = "No Name"};
 	        	var sn=$('td:eq(1)', nRow).html();
 	        	var link = mr.getClientDetailLink(name, sn, '#tab_kandji-tab');
 	        	$('td:eq(0)', nRow).html(link);
-                console.log(nRow);
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
 	        	var kandji_id=$('td:eq(6)', nRow).html();

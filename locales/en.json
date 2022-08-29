@@ -26,6 +26,7 @@
     "not_authorized": "Unauthorized - Bad username or password",
     "token_set": "Kandji API Token Set",
     "password_type": "Password Type",
+    "processing": "Fetching device records from Kandji...",
     "pull_in_all": "Pull in All Kandji Data",
     "realname": "Full Name",
     "recheck": "Pull Kandji Data",
