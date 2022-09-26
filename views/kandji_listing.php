@@ -71,7 +71,7 @@ new Kandji_model;
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
 	        	var kandji_id=$('td:eq(6)', nRow).html();
-                var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
+            var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
 	        	var link = '<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+kandji_id+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">'+serial+'</a>';
 	        	$('td:eq(1)', nRow).html(link);
 

@@ -6,6 +6,9 @@ client_tabs:
     kandji-tab:
         view: kandji_tab
         i18n: kandji.title
+detail_widgets:
+    kandji_detail:
+        view: kandji_detail_widget
 listings:
     kandji:
         view: kandji_listing
