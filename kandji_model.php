@@ -1,8 +1,6 @@
 <?php
 
-use munkireport\models\MRModel as Eloquent;
-
-class Kandji_model extends Eloquent {
+class Kandji_model extends \Model {
     
     protected $error = '';
     protected $module_dir;
