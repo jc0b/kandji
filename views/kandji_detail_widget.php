@@ -12,14 +12,9 @@ $(document).on('appReady', function(){
                 .append($('<tbody>')
                     .append($('<tr>')
                         .append($('<th>')
-                            .text(i18n.t('kandji.blueprint_name')))
-                        .append($('<td>')
-                            .text(data.blueprint_name)))
-                    .append($('<tr>')
-                        .append($('<th>')
                             .text(i18n.t('kandji.full_name')))
                         .append($('<td>')
-                            .text(data.full_name)))
+                            .text(data.realname)))
                     .append($('<tr>')
                         .append($('<th>')
                             .text(i18n.t('kandji.email_address')))
@@ -29,7 +24,7 @@ $(document).on('appReady', function(){
                         .append($('<th>')
                             .text(i18n.t('kandji.blueprint_name')))
                         .append($('<td>')
-                            .text('<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+data.kandji_id+'" target="_blank" title="'+i18n.t('kandji.kandji_id_short')+'">'+data.kandji_id+'</a>'))));
+                            .text(data.blueprint_name))));
     });
 });
 </script>
