@@ -20,6 +20,7 @@
     "last_enrollment": "Last Enrollment",
     "leave_page_warning": "MunkiReport is currently pulling in all Kandji data. Are you sure you want to leave the page?",
     "lookups_enabled": "MunkiReport Kandji Integration Enabled",
+    "month": "Month",
     "name": "Name",
     "no_kandji_agent_version": "Kandji Binary Versions",
     "none": "None",

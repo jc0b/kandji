@@ -63,14 +63,17 @@ class kandji_controller extends Module_controller
          $month = $currentdate - 2592000;
 
          $sql = "SELECT COUNT( CASE WHEN ".$month." >= last_check_in THEN 1 END) AS red,
-						COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
-						COUNT( CASE WHEN last_check_in > ".$week." AND last_check_in > 0 THEN 1 END) AS green
-						FROM kandji
+                        COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
+                        COUNT( CASE WHEN last_check_in > ".$week." AND last_check_in > 0 THEN 1 END) AS green
+                        FROM kandji
                         LEFT JOIN reportdata USING (serial_number)
-						".get_machine_group_filter();
+                        ".get_machine_group_filter();
 
          $queryobj = new Kandji_model();
-         jsonView($queryobj->query($sql)[0]);
+         foreach($queryobj->query($sql)[0] as $label => $value){
+               $out[] = ['label' => $label, 'count' => $value];
+         }
+         jsonView($out);
      }
 
     /**

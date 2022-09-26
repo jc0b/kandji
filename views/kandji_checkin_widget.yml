@@ -8,7 +8,7 @@ i18n_empty_result: no_data
 buttons:
   - label: red
     i18n_label: kandji.month
-    class: btn-danger 
+    class: btn-danger
   - label: yellow
     i18n_label: kandji.week
     class: btn-warning
