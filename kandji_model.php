@@ -1,6 +1,6 @@
 <?php
 
-se munkireport\models\MRModel as Eloquent;
+use munkireport\models\MRModel as Eloquent;
 
 class Kandji_model extends \Eloquent {
     
