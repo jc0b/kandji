@@ -70,7 +70,7 @@ class kandji_controller extends Module_controller
 						".get_machine_group_filter();
 
          $queryobj = new Kandji_model();
-         jsonView($queryobj->query($sql));
+         jsonView($queryobj->query($sql)[0]);
      }
 
     /**
