@@ -11,7 +11,7 @@ $factory->define(Kandji_model::class, function (Faker\Generator $faker) {
         'blueprint_id' => $faker->unique()->regexify('[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}'),
         'blueprint_name' => 'Kandji Blueprint',
         'realname' => $faker->name(),
-        'email_address' => $faker->email()
+        'email_address' => $faker->email(),
         'agent_version' => $faker->randomElement(['3.3.0.607', '3.2.0.557', '3.1.6.469']),
         'asset_tag' => $faker->unique()->regexify('[0-9]{8}'),
     ];
