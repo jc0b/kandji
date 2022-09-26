@@ -1,6 +1,6 @@
 <?php
 
-class Kandji_model extends \Model {
+class Kandji_model extends Model {
     
     protected $error = '';
     protected $module_dir;
