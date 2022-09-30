@@ -50,7 +50,7 @@ class kandji_controller extends Module_controller
 
         // $queryobj = new Kandji_model;
         // jsonView($queryobj->query($sql));
-        echo $kandji_version_data
+        echo $kandji_version_data;
         $obj = new View();
         $obj->view('json', array('msg' => $kandji_version_data));
     }
