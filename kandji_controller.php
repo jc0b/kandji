@@ -164,6 +164,6 @@ class kandji_controller extends Module_controller
     {   
         $machinedata = Kandji_model::select("*")->where("kandji.serial_number", $serial_number)->filter()->get();
         $obj = new View();
-        $obj->view('json', array('msg' => $machinedata));
+        $obj->view('json', array('msg' => $machinedata[0]));
     }
 } // End class kandji_module
