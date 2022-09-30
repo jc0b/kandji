@@ -51,7 +51,9 @@ class Kandji_helper
         $Kandji_model->email_address = $json[0]->user->email;
 
         // Save the data, Protecc the data
-        $Kandji_model->save();
+        Kandji_model::updateOrCreate(
+            ['serial_number' => $this->serial_number], $Kandji_model
+        );
         $error = 'Kandji data processed';
         return $error;
     }
