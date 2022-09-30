@@ -2,16 +2,16 @@
 
 namespace munkireport\module\kandji;
 
-use munkireport\module\kandji\kandji_model as Kandji_model;
+use munkireport\module\kandji\Kandji_model;
 
 class Kandji_helper
 {
     /**
      *
-     * @param object Kandji model instance
+     * @param object Kandji machine instance
      * @author jc0b
      **/
-    public function pull_kandji_data(&$Kandji_model)
+    public function pull_kandji_data($Kandji_machine)
     {
         // Error message
         $error = '';
@@ -20,7 +20,7 @@ class Kandji_helper
         $kandji_api_endpoint = rtrim(conf('kandji_api_endpoint'), '/');
 
         // Get computer data from Kandji
-        $url = "{$kandji_api_endpoint}/api/v1/devices/?serial_number={$Kandji_model->serial_number}";
+        $url = "{$kandji_api_endpoint}/api/v1/devices/?serial_number={$Kandji_machine->serial_number}";
         $kandji_computer_result = $this->send_kandji_query($url);
 
         if(! $kandji_computer_result){
@@ -38,23 +38,23 @@ class Kandji_helper
 
         // Transpose Kandji API output into Kandji model
         // General section 
-        $Kandji_model->kandji_id = $json[0]->device_id;
-        $Kandji_model->name = $json[0]->device_name;
-        $Kandji_model->kandji_agent_version = $json[0]->agent_version;
-        $Kandji_model->asset_tag = $json[0]->asset_tag;
-        $Kandji_model->blueprint_id = $json[0]->blueprint_id;
-        $Kandji_model->blueprint_name = $json[0]->blueprint_name;
-        $Kandji_model->last_check_in = $this->convert_time_to_epoch($json[0]->last_check_in);
-        $Kandji_model->last_enrollment = $this->convert_time_to_epoch($json[0]->last_enrollment);
-        $Kandji_model->first_enrollment = $this->convert_time_to_epoch($json[0]->first_enrollment);
+        $Kandji_machine->kandji_id = $json[0]->device_id;
+        $Kandji_machine->name = $json[0]->device_name;
+        $Kandji_machine->kandji_agent_version = $json[0]->agent_version;
+        $Kandji_machine->asset_tag = $json[0]->asset_tag;
+        $Kandji_machine->blueprint_id = $json[0]->blueprint_id;
+        $Kandji_machine->blueprint_name = $json[0]->blueprint_name;
+        $Kandji_machine->last_check_in = $this->convert_time_to_epoch($json[0]->last_check_in);
+        $Kandji_machine->last_enrollment = $this->convert_time_to_epoch($json[0]->last_enrollment);
+        $Kandji_machine->first_enrollment = $this->convert_time_to_epoch($json[0]->first_enrollment);
 
         // Location section
-        $Kandji_model->realname = $json[0]->user->name;
-        $Kandji_model->email_address = $json[0]->user->email;
+        $Kandji_machine->realname = $json[0]->user->name;
+        $Kandji_machine->email_address = $json[0]->user->email;
 
         // Save the data, Protecc the data
         Kandji_model::updateOrCreate(
-            ['serial_number' => $this->serial_number], $Kandji_model
+            ['serial_number' => $this->serial_number], $Kandji_machine
         );
         $error = 'Kandji data processed';
         return $error;

@@ -18,10 +18,6 @@ class Kandji_processor extends Processor
             // ^^ Comment and uncomment to turn off and on
         }
 
-        Kandji_model::updateOrCreate(
-            ['serial_number' => $this->serial_number], $modelData
-        );
-
         return $this;
     }
 }
