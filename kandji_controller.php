@@ -67,7 +67,7 @@ class kandji_controller extends Module_controller
                         COUNT( CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green
                         FROM kandji
                         LEFT JOIN reportdata USING (serial_number)")
-                    ->filter();
+                    ->filter()
                     ->first();
          // $sql = "SELECT COUNT( CASE WHEN ".$month." >= last_check_in THEN 1 END) AS red,
          //                COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
