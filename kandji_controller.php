@@ -148,7 +148,7 @@ class kandji_controller extends Module_controller
     {
         if (authorized_for_serial($serial)) {
             $kandji = new Kandji_model();
-            $kandji->serial_number = $incoming_serial;
+            $kandji->serial_number = $serial;
             $this->run_kandji_stats($kandji);
         }
 
