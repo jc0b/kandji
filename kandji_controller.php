@@ -86,7 +86,7 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = Kandji_model::selectRaw("SELECT machine.serial_number FROM machine")->filter()->toArray();
+            $machinedata = Kandji_model::selectRaw("SELECT machine.serial_number FROM machine")->filter()->get()->toArray();
             // $sql = "SELECT machine.serial_number
             //     FROM machine
             //     LEFT JOIN reportdata USING (serial_number)
