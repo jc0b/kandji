@@ -54,7 +54,7 @@ class Kandji_helper
 
         // Save the data, Protecc the data
         Kandji_model::updateOrCreate(
-            ['serial_number' => $Kandji_machine->serial_number], $Kandji_machine
+            ['serial_number' => $Kandji_machine->serial_number], [$Kandji_machine]
         );
         $error = 'Kandji data processed';
         return $error;
