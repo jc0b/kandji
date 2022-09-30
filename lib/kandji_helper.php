@@ -2,7 +2,7 @@
 
 namespace munkireport\module\kandji;
 
-use munkireport\module\kandji\Kandji_model;
+use Kandji_model;
 
 class Kandji_helper
 {
