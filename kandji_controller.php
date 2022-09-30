@@ -58,32 +58,18 @@ class kandji_controller extends Module_controller
      **/
      public function get_last_checkin()
      {        
-         $currentdate = date_timestamp_get(date_create());
-         $week = $currentdate - 604800;
-         $month = $currentdate - 2592000;
+        $currentdate = date_timestamp_get(date_create());
+        $week = $currentdate - 604800;
+        $month = $currentdate - 2592000;
 
-         $checkin_data = Kandji_model::selectRaw("SUM(CASE WHEN last_check_in <= $month THEN 1 END) AS red, SUM(CASE WHEN last_check_in <= $week AND last_check_in > $month THEN 1 END) AS yellow, SUM(CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green")->filter()->first();
-         // $sql = Kandji_model::selectRaw("COUNT( CASE WHEN $month >= last_check_in THEN 1 END) AS red,
-         //                COUNT( CASE WHEN $week >= last_check_in AND last_check_in > $month THEN 1 END) AS yellow,
-         //                COUNT( CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green
-         //                FROM kandji
-         //                LEFT JOIN reportdata USING (serial_number)")
-         //            ->filter()
-         //            ->first();
-         // $sql = "SELECT COUNT( CASE WHEN ".$month." >= last_check_in THEN 1 END) AS red,
-         //                COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
-         //                COUNT( CASE WHEN last_check_in > ".$week." AND last_check_in > 0 THEN 1 END) AS green
-         //                FROM kandji
-         //                LEFT JOIN reportdata USING (serial_number)
-         //                ".get_machine_group_filter();
+        $checkin_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN last_check_in <= $month THEN 1 END), 0) AS red, 
+            COALESCE(SUM(CASE WHEN last_check_in <= $week AND last_check_in > $month THEN 1 END), 0) AS yellow, 
+            COALESCE(SUM(CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END), 0) AS green")
+        ->filter()
+        ->first();
 
         $obj = new View();
         $obj->view('json', array('msg' => $checkin_data));
-         // $queryobj = new Kandji_model();
-         // foreach($queryobj->query($sql)[0] as $label => $value){
-         //       $out[] = ['label' => $label, 'count' => $value];
-         // }
-         // jsonView($out);
      }
 
     /**
