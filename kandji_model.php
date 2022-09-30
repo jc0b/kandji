@@ -2,9 +2,9 @@
 
 use munkireport\models\MRModel as Eloquent;
 
-class Kandji_new_model extends Eloquent
+class Kandji_model extends Eloquent
 {
-    protected $table = 'kandji_new';
+    protected $table = 'kandji';
 
     protected $hidden = ['id', 'serial_number'];
 
