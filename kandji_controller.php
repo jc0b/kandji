@@ -6,6 +6,9 @@
  * @package munkireport
  * @author jc0b
  **/
+
+use munkireport\module\kandji\kandji_processor as Kandji_processor;
+
 class kandji_controller extends Module_controller
 {
     public function __construct()
@@ -35,11 +38,10 @@ class kandji_controller extends Module_controller
      * Get Kandji version for widget
      *
      * @return void
-     * @author tuxudo
+     * @author jc0b
      **/
     public function get_kandji_version()
-    {   
-        // $kandji_version_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count, kandji_agent_version")->filter()->groupBy('kandji_agent_version')->orderBy('count', 'desc');
+    {
         $kandji_version_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count, kandji_agent_version")->filter()->groupBy('kandji_agent_version')->orderBy('count', 'desc')->get()->toArray();
         $obj = new View();
         $obj->view('json', array('msg' => $kandji_version_data));
@@ -49,7 +51,7 @@ class kandji_controller extends Module_controller
     /**
      * REST API for retrieving last checkin data for widget
      *
-     * @author tuxudo
+     * @author jc0b
      **/
      public function get_last_checkin()
      {        
@@ -81,24 +83,27 @@ class kandji_controller extends Module_controller
         // a JSON of what serial number was just ran with the status of the run
         if ( $incoming_serial == ''){
             // Get all the serial numbers in an object
-            $machine = new Kandji_model();
-            $filter = get_machine_group_filter();
+            // $machine = new Kandji_model();
+            // $filter = get_machine_group_filter();
 
-            $sql = "SELECT machine.serial_number
-                FROM machine
-                LEFT JOIN reportdata USING (serial_number)
-                $filter";
+            $machinedata = Kandji_model::selectRaw("SELECT machine.serial_number FROM machine")->filter();
+            // $sql = "SELECT machine.serial_number
+            //     FROM machine
+            //     LEFT JOIN reportdata USING (serial_number)
+            //     $filter";
 
             // Loop through each serial number for processing
             $out = array();
-            foreach ($machine->query($sql) as $serialobj) {
+            foreach ($out as $serialobj) {
                 $out[] = $serialobj->serial_number;
             }
-            jsonView($out);
+            $obj = new View();
+            $obj->view('json', array('msg' => $out));
         } else {
 
-            $kandji = new Kandji_model($incoming_serial);
-            $kandji_status = $kandji->run_kandji_stats();
+            $kandji = new Kandji_model();
+            $kandji->serial_number = $incoming_serial
+            $kandji_status = run_kandji_stats($kandji);
 
             // Check if machine exists in Kandji
             if ($kandji_status->rs['kandji_id'] == 0 ){
@@ -106,8 +111,29 @@ class kandji_controller extends Module_controller
             } else {
                 $out = array("serial"=>$incoming_serial,"status"=>"Machine processed");
             }
-            jsonView($out);
+            $obj = new View();
+            $obj->view('json', array('msg' => $out));
         }
+    }
+
+    /**
+    * Get Kandji data
+    *
+    * @return void
+    * @author jc0b
+    **/
+    function run_kandji_stats($kandji_model)
+    {
+        // Check if we should enable Kandji lookup
+        if (conf('kandji_enable')) {
+            // Load Kandji helper
+            require_once($this->module_dir.'/lib/kandji_helper.php');
+            $kandji_helper = new munkireport\module\kandji\kandji_helper;
+            $kandji_helper->pull_kandji_data($kandji_model);
+            // ^^ Comment and uncomment to turn off and on
+        }
+         
+        return $this;
     }
 
     /**

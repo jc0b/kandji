@@ -2,7 +2,7 @@
 
 use munkireport\processors\Processor;
 
-class Kandji_new_processor extends Processor
+class Kandji_processor extends Processor
 {
     public function run($data)
     {   
