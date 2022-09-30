@@ -128,7 +128,7 @@ class kandji_controller extends Module_controller
         // Check if we should enable Kandji lookup
         if (conf('kandji_enable')) {
             // Load Kandji helper
-            require_once($this->module_dir.'/lib/kandji_helper.php');
+            require_once($module_dir.'/lib/kandji_helper.php');
             $kandji_helper = new munkireport\module\kandji\kandji_helper;
             $kandji_helper->pull_kandji_data($kandji_model);
             // ^^ Comment and uncomment to turn off and on
