@@ -107,7 +107,7 @@ class kandji_controller extends Module_controller
             $kandji_status = $this->run_kandji_stats($kandji);
 
             // Check if machine exists in Kandji
-            if ($kandji_status->kandji_id == 0 ){
+            if ($kandji->kandji_id == 0 ){
                 $out = array("serial"=>$incoming_serial,"status"=>"Machine not found in Kandji!");
             } else {
                 $out = array("serial"=>$incoming_serial,"status"=>"Machine processed");
