@@ -11,7 +11,7 @@ class Kandji_helper
      * @param object Kandji machine instance
      * @author jc0b
      **/
-    public function pull_kandji_data($Kandji_machine)
+    public function pull_kandji_data(&$Kandji_machine)
     {
         // Error message
         $error = '';

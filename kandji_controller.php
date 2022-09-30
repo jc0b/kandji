@@ -103,6 +103,7 @@ class kandji_controller extends Module_controller
 
             $kandji = new Kandji_model();
             $kandji->serial_number = $incoming_serial;
+            $kandji->kandji_id = 0;
             $kandji_status = $this->run_kandji_stats($kandji);
 
             // Check if machine exists in Kandji
@@ -122,7 +123,7 @@ class kandji_controller extends Module_controller
     * @return void
     * @author jc0b
     **/
-    function run_kandji_stats($kandji_model)
+    function run_kandji_stats(&$kandji_model)
     {
         $module_dir = dirname(__FILE__);
         // Check if we should enable Kandji lookup
