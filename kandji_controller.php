@@ -38,16 +38,20 @@ class kandji_controller extends Module_controller
      * @author tuxudo
      **/
     public function get_kandji_version()
-    {
-        $sql = "SELECT COUNT(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END) AS count, kandji_agent_version 
-                FROM kandji
-                LEFT JOIN reportdata USING (serial_number)
-                ".get_machine_group_filter()."
-                GROUP BY kandji_agent_version
-                ORDER BY count DESC";
+    {   
+        $kandji_version_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count, kandji_agent_version")->filter();
+        // $sql = "SELECT COUNT(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END) AS count, kandji_agent_version 
+        //         FROM kandji
+        //         LEFT JOIN reportdata USING (serial_number)
+        //         ".get_machine_group_filter()."
+        //         GROUP BY kandji_agent_version
+        //         ORDER BY count DESC";
 
-        $queryobj = new Kandji_model;
-        jsonView($queryobj->query($sql));
+        // $queryobj = new Kandji_model;
+        // jsonView($queryobj->query($sql));
+
+        $obj = new View();
+        $obj->view('json', array('msg' => $kandji_version_data));
     }
 
 
