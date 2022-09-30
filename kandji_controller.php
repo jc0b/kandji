@@ -103,7 +103,7 @@ class kandji_controller extends Module_controller
 
             $kandji = new Kandji_model();
             $kandji->serial_number = $incoming_serial;
-            $kandji_status = run_kandji_stats($kandji);
+            $kandji_status = $this->run_kandji_stats($kandji);
 
             // Check if machine exists in Kandji
             if ($kandji_status->rs['kandji_id'] == 0 ){
