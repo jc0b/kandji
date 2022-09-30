@@ -124,6 +124,7 @@ class kandji_controller extends Module_controller
     **/
     function run_kandji_stats($kandji_model)
     {
+        $module_dir = dirname(__FILE__);
         // Check if we should enable Kandji lookup
         if (conf('kandji_enable')) {
             // Load Kandji helper
