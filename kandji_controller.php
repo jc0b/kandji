@@ -40,7 +40,7 @@ class kandji_controller extends Module_controller
     public function get_kandji_version()
     {   
         // $kandji_version_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count, kandji_agent_version")->filter()->groupBy('kandji_agent_version')->orderBy('count', 'desc');
-        $kandji_version_data = Kandji_model::selectRaw("(COALESCE(SUM(CASE WHEN kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count), kandji_agent_version");
+        $kandji_version_data = Kandji_model::selectRaw("COALESCE(SUM(CASE WHEN kandji_agent_version IS NOT NULL THEN 1 END), 0) AS count, kandji_agent_version");
         // $sql = "SELECT COUNT(CASE WHEN kandji_agent_version <> '' AND kandji_agent_version IS NOT NULL THEN 1 END) AS count, kandji_agent_version 
         //         FROM kandji
         //         LEFT JOIN reportdata USING (serial_number)
@@ -50,7 +50,7 @@ class kandji_controller extends Module_controller
 
         // $queryobj = new Kandji_model;
         // jsonView($queryobj->query($sql));
-
+        echo $kandji_version_data
         $obj = new View();
         $obj->view('json', array('msg' => $kandji_version_data));
     }
