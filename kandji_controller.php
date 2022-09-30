@@ -147,8 +147,9 @@ class kandji_controller extends Module_controller
     public function recheck_kandji($serial = '')
     {
         if (authorized_for_serial($serial)) {
-            $kandji = new Kandji_model($serial);
-            $kandji->run_kandji_stats();
+            $kandji = new Kandji_model();
+            $kandji->serial_number = $incoming_serial;
+            $this->run_kandji_stats($kandji);
         }
 
         redirect("clients/detail/$serial#tab_kandji-tab");
@@ -160,8 +161,9 @@ class kandji_controller extends Module_controller
      * @param string $serial serial number
      **/
     public function get_data($serial_number = '')
-    {
-        $kandji = new Kandji_model($serial_number);
-        jsonView($kandji->rs);
+    {   
+        $machinedata = Kandji_model::selectRaw("SELECT $serial_number");
+        $obj = new View();
+        $obj->view('json', array('msg' => $machinedata));
     }
 } // End class kandji_module
