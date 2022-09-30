@@ -62,18 +62,26 @@ class kandji_controller extends Module_controller
          $week = $currentdate - 604800;
          $month = $currentdate - 2592000;
 
-         $sql = "SELECT COUNT( CASE WHEN ".$month." >= last_check_in THEN 1 END) AS red,
-                        COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
-                        COUNT( CASE WHEN last_check_in > ".$week." AND last_check_in > 0 THEN 1 END) AS green
+         $sql = Kandji_model::selectRaw("COUNT( CASE WHEN $month >= last_check_in THEN 1 END) AS red,
+                        COUNT( CASE WHEN $week. >= last_check_in AND last_check_in > $month THEN 1 END) AS yellow,
+                        COUNT( CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green
                         FROM kandji
-                        LEFT JOIN reportdata USING (serial_number)
-                        ".get_machine_group_filter();
+                        LEFT JOIN reportdata USING (serial_number)")
+                    ->filter();
+         // $sql = "SELECT COUNT( CASE WHEN ".$month." >= last_check_in THEN 1 END) AS red,
+         //                COUNT( CASE WHEN ".$week." >= last_check_in AND last_check_in > ".$month." THEN 1 END) AS yellow,
+         //                COUNT( CASE WHEN last_check_in > ".$week." AND last_check_in > 0 THEN 1 END) AS green
+         //                FROM kandji
+         //                LEFT JOIN reportdata USING (serial_number)
+         //                ".get_machine_group_filter();
 
-         $queryobj = new Kandji_model();
-         foreach($queryobj->query($sql)[0] as $label => $value){
-               $out[] = ['label' => $label, 'count' => $value];
-         }
-         jsonView($out);
+        $obj = new View();
+        $obj->view('json', array('msg' => $sql));
+         // $queryobj = new Kandji_model();
+         // foreach($queryobj->query($sql)[0] as $label => $value){
+         //       $out[] = ['label' => $label, 'count' => $value];
+         // }
+         // jsonView($out);
      }
 
     /**
