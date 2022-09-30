@@ -162,7 +162,7 @@ class kandji_controller extends Module_controller
      **/
     public function get_data($serial_number = '')
     {   
-        $machinedata = Kandji_model::select("*")->where("serial_number", $serial_number)->filter()->get()->toArray();
+        $machinedata = Kandji_model::select("*")->where("kandji.serial_number", $serial_number)->filter()->get()->toArray();
         $obj = new View();
         $obj->view('json', array('msg' => $machinedata));
     }
