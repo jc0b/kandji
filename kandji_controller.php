@@ -66,7 +66,8 @@ class kandji_controller extends Module_controller
             COALESCE(SUM(CASE WHEN last_check_in <= $week AND last_check_in > $month THEN 1 END), 0) AS yellow, 
             COALESCE(SUM(CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END), 0) AS green")
         ->filter()
-        ->first();
+        ->first()
+        ->toLabelCount();
 
         $obj = new View();
         $obj->view('json', array('msg' => $checkin_data));
