@@ -86,7 +86,7 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = Kandji_model::selectRaw("SELECT machine.serial_number FROM machine")->filter();
+            $machinedata = Kandji_model::selectRaw("SELECT machine.serial_number FROM machine")->filter()->toArray();
             // $sql = "SELECT machine.serial_number
             //     FROM machine
             //     LEFT JOIN reportdata USING (serial_number)
@@ -98,7 +98,7 @@ class kandji_controller extends Module_controller
                 $out[] = $serialobj->serial_number;
             }
             $obj = new View();
-            $obj->view('json', array('msg' => $out));
+            $obj->view('json', array('msg' => $machinedata));
         } else {
 
             $kandji = new Kandji_model();
