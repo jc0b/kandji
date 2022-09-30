@@ -8,6 +8,7 @@
  **/
 
 use munkireport\module\kandji\kandji_processor as Kandji_processor;
+use munkireport\module\machine\machine_model as Machine_model;
 
 class kandji_controller extends Module_controller
 {
@@ -86,7 +87,7 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = Kandji_model::select("SELECT machine.serial_number FROM machine")->filter()->get()->toArray();
+            $machinedata = Machine_model::select("SELECT serial_number")->filter()->get()->toArray();
             // $sql = "SELECT machine.serial_number
             //     FROM machine
             //     LEFT JOIN reportdata USING (serial_number)
