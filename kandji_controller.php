@@ -62,6 +62,7 @@ class kandji_controller extends Module_controller
          $week = $currentdate - 604800;
          $month = $currentdate - 2592000;
 
+         $checkin_data = Kandji_model::selectRaw("SUM(CASE WHEN last_check_in <= $month THEN 1 END) AS red, SUM(CASE WHEN last_check_in <= $week AND last_check_in > $month THEN 1 END) AS yellow, SUM(CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green")->filter()->first();
          $sql = Kandji_model::selectRaw("COUNT( CASE WHEN $month >= last_check_in THEN 1 END) AS red,
                         COUNT( CASE WHEN $week >= last_check_in AND last_check_in > $month THEN 1 END) AS yellow,
                         COUNT( CASE WHEN last_check_in > $week AND last_check_in > 0 THEN 1 END) AS green
@@ -77,7 +78,7 @@ class kandji_controller extends Module_controller
          //                ".get_machine_group_filter();
 
         $obj = new View();
-        $obj->view('json', array('msg' => $sql));
+        $obj->view('json', array('msg' => $checkin_data));
          // $queryobj = new Kandji_model();
          // foreach($queryobj->query($sql)[0] as $label => $value){
          //       $out[] = ['label' => $label, 'count' => $value];
