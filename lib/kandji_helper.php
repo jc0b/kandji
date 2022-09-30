@@ -2,6 +2,8 @@
 
 namespace munkireport\module\kandji;
 
+use munkireport\module\kandji\kandji_model as Kandji_model;
+
 class Kandji_helper
 {
     /**
