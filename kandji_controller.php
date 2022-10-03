@@ -7,7 +7,7 @@
  * @author jc0b
  **/
 
-use munkireport\module\kandji\kandji_processor as Kandji_processor;
+// use munkireport\module\kandji\kandji_processor as Kandji_processor;
 use munkireport\module\machine\machine_model as Machine_model;
 
 class kandji_controller extends Module_controller

@@ -6,6 +6,7 @@ class Kandji_processor extends Processor
 {
     public function run($data)
     {   
+        echo $data;
         configAppendFile(__DIR__ . '/config.php');
         $modelData = ['serial_number' => $this->serial_number];
         $module_dir = dirname(__FILE__);
