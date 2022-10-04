@@ -3,13 +3,13 @@
 import subprocess, re
 import os
 import sys
+import plistlib
 import json
 import time
 
 sys.path.insert(0, '/usr/local/munki')
 sys.path.insert(0, '/usr/local/munkireport')
 
-from munkilib import FoundationPlist
 from Foundation import CFPreferencesCopyAppValue
 
 def get_local_kandji_prefs():
@@ -38,7 +38,7 @@ def main():
     # Write results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
     output_plist = os.path.join(cachedir, 'kandji.plist')
-    FoundationPlist.writePlist(result, output_plist)
+    plistlib.writePlist(result, output_plist)
 
 if __name__ == "__main__":
     main()
