@@ -19,11 +19,15 @@ class Kandji_processor extends Processor
         $parser->parse($plist, CFPropertyList::FORMAT_XML);
         $mylist = $parser->toArray();
 
+        $model = Kandji_model::firstOrNew(['serial_number' => $this->serial_number]);
+
+        $model->fill($mylist);
+
         if (conf('kandji_enable')) {
             // Load Kandji helper
             require_once($module_dir.'/lib/kandji_helper.php');
             $kandji_helper = new munkireport\module\kandji\kandji_helper;
-            $kandji_helper->pull_kandji_data($mylist);
+            $kandji_helper->pull_kandji_data($model);
             // ^^ Comment and uncomment to turn off and on
         }
 
