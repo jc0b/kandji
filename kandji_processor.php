@@ -6,9 +6,9 @@ class Kandji_processor extends Processor
 {
     public function run($plist)
     {   
-        if ( ! $plist){
-            throw new Exception("Error Processing Request: No property list found", 1);
-        }
+        // if ( ! $plist){
+        //     throw new Exception("Error Processing Request: No property list found", 1);
+        // }
         echo $plist;
         configAppendFile(__DIR__ . '/config.php');
         $module_dir = dirname(__FILE__);
