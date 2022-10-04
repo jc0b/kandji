@@ -14,8 +14,8 @@ from Foundation import CFPreferencesCopyAppValue
 
 def get_local_kandji_prefs():
     result = dict()
-    result['blueprint_name'] = CFPreferencesCopyAppValue('AgentVersion', 'io.kandji.Kandji')
-    result['kandji_agent_version'] = CFPreferencesCopyAppValue('Blueprint', 'io.kandji.Kandji')
+    result['kandji_agent_version'] = CFPreferencesCopyAppValue('AgentVersion', 'io.kandji.Kandji')
+    result['blueprint_name'] = CFPreferencesCopyAppValue('Blueprint', 'io.kandji.Kandji')
     result['kandji_id'] = CFPreferencesCopyAppValue('ComputerURL', 'io.kandji.Kandji').split('/')[-1]
     return result
 
