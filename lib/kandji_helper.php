@@ -38,7 +38,6 @@ class Kandji_helper
 
         // Transpose Kandji API output into Kandji model
         // General section 
-        $Kandji_machine->kandji_id = $json[0]->device_id;
         $Kandji_machine->name = $json[0]->device_name;
         $Kandji_machine->asset_tag = $json[0]->asset_tag;
         $Kandji_machine->blueprint_id = $json[0]->blueprint_id;
