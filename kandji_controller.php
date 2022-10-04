@@ -10,6 +10,9 @@
 // use munkireport\module\kandji\kandji_processor as Kandji_processor;
 use munkireport\module\machine\machine_model as Machine_model;
 
+use Illuminate\Support\Facades\DB;
+
+
 class kandji_controller extends Module_controller
 {
     public function __construct()
@@ -87,7 +90,7 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = \DB::table('machine')->selectRaw("serial_number")->filter()->get()->toArray();
+            $machinedata = DB::table('machine')->selectRaw("serial_number")->filter()->get()->toArray();
             // $sql = "SELECT machine.serial_number
             //     FROM machine
             //     LEFT JOIN reportdata USING (serial_number)
