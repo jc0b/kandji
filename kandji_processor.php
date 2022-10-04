@@ -1,5 +1,6 @@
 <?php
 
+use CFPropertyList\CFPropertyList;
 use munkireport\processors\Processor;
 
 class Kandji_processor extends Processor
