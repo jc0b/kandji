@@ -8,7 +8,7 @@
  **/
 
 // use munkireport\module\kandji\kandji_processor as Kandji_processor;
-use munkireport\models\MRModel as Eloquent;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 use Illuminate\Support\Facades\DB;
 
