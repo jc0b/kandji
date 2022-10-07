@@ -6,7 +6,7 @@
  * @package munkireport
  * @author jc0b
  **/
-use munkireport\module\machine\Machine_model;
+// use munkireport\module\machine\Machine_model;
 // use munkireport\module\kandji\kandji_processor as Kandji_processor;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -95,9 +95,9 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = Machine_model::selectRaw("serial_number")->filter()->get()->toArray();
+            // $machinedata = Machine_model::selectRaw("serial_number")->filter()->get()->toArray();
 
-            $machinedata2 = Temp_machine_model::selectRaw("serial_number")->filter()->get()->toArray();
+            $machinedata = Temp_machine_model::selectRaw("serial_number")->filter()->get()->toArray();
             echo $machinedata2;
             // $sql = "SELECT machine.serial_number
             //     FROM machine
