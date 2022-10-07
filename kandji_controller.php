@@ -107,7 +107,7 @@ class kandji_controller extends Module_controller
             // Loop through each serial number for processing
             $out = array();
             foreach ($machinedata as $serialobj) {
-                echo $serialobj
+                echo $serialobj;
                 $out[] = $serialobj->serial_number;
             }
             $obj = new View();
