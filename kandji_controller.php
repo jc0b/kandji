@@ -6,12 +6,17 @@
  * @package munkireport
  * @author jc0b
  **/
-
+use munkireport\module\machine\Machine_model;
 // use munkireport\module\kandji\kandji_processor as Kandji_processor;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
 use Illuminate\Support\Facades\DB;
 
+
+class Temp_machine_model extends Eloquent
+{
+    protected $table = 'machine';
+}
 
 class kandji_controller extends Module_controller
 {
@@ -90,7 +95,10 @@ class kandji_controller extends Module_controller
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
-            $machinedata = Eloquent::selectRaw("serial_number FROM machine")->filter()->get()->toArray();
+            $machinedata = Machine_model::selectRaw("serial_number")->filter()->get()->toArray();
+
+            $machinedata2 = Temp_machine_model::selectRaw("serial_number")->filter()->get()->toArray();
+            echo $machinedata2;
             // $sql = "SELECT machine.serial_number
             //     FROM machine
             //     LEFT JOIN reportdata USING (serial_number)
