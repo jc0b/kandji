@@ -36,26 +36,7 @@ class Kandji_helper
             return $error;
         }
 
-        // Transpose Kandji API output into Kandji model
-        // General section 
-        $Kandji_machine->name = $json[0]->device_name;
-        $Kandji_machine->asset_tag = $json[0]->asset_tag;
-        $Kandji_machine->blueprint_id = $json[0]->blueprint_id;
-        $Kandji_machine->blueprint_name = $json[0]->blueprint_name;
-        $Kandji_machine->last_check_in = $this->convert_time_to_epoch($json[0]->last_check_in);
-        $Kandji_machine->last_enrollment = $this->convert_time_to_epoch($json[0]->last_enrollment);
-        $Kandji_machine->first_enrollment = $this->convert_time_to_epoch($json[0]->first_enrollment);
-
-        // Location section
-        $Kandji_machine->realname = $json[0]->user->name;
-        $Kandji_machine->email_address = $json[0]->user->email;
-
-        // Save the data, Protecc the data
-        Kandji_model::updateOrCreate(
-            ['serial_number' => $Kandji_machine->serial_number], [$Kandji_machine]
-        );
-        $error = 'Kandji data processed';
-        return $error;
+        return $json;
     }
 
     /**

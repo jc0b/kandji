@@ -44,7 +44,9 @@ def get_passport_info():
             kandji_linked_account = user['dsAttrTypeNative:io.kandji.KandjiLogin.LinkedAccount'][0]
             user_shortname = user['dsAttrTypeStandard:RecordName'][0]
             out.append('%s: %s' % (user_shortname, kandji_linked_account))
-    return out
+    if len(out) > 0:
+        return ', '.join(out)
+    return []
 
 def main():
     """Main"""

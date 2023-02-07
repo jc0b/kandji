@@ -24,7 +24,14 @@ class Kandji_processor extends Processor
         $parser->parse($plist, CFPropertyList::FORMAT_XML);
         $mylist = $parser->toArray();
 
-        $model = Kandji_model::firstOrNew(['serial_number' => $this->serial_number]);
+        // Retrieve Kandji MR record (if existing)
+        try {
+            $model = Kandji_model::select()
+                ->where('serial_number', $this->serial_number)
+                ->firstOrFail();
+        } catch (\Throwable $th) {
+            $model = new Kandji_model();
+        }
 
         $model->fill($mylist);
 
@@ -33,10 +40,24 @@ class Kandji_processor extends Processor
             // Load Kandji helper
             require_once($module_dir.'/lib/kandji_helper.php');
             $kandji_helper = new munkireport\module\kandji\kandji_helper;
-            $kandji_helper->pull_kandji_data($model);
-            // ^^ Comment and uncomment to turn off and on
+            $json = $kandji_helper->pull_kandji_data($model);
+
+            // Transpose Kandji API output into Kandji model
+            // General section 
+            $mylist['name'] = $json[0]->device_name;
+            $mylist['asset_tag'] = $json[0]->asset_tag;
+            $mylist['blueprint_id'] = $json[0]->blueprint_id;
+            $mylist['blueprint_name'] = $json[0]->blueprint_name;
+            $mylist['last_check_in'] = $kandji_helper->convert_time_to_epoch($json[0]->last_check_in);
+            $mylist['last_enrollment'] = $kandji_helper->convert_time_to_epoch($json[0]->last_enrollment);
+            $mylist['first_enrollment'] = $kandji_helper->convert_time_to_epoch($json[0]->first_enrollment);
+
+            // Location section
+            $mylist['realname'] = $json[0]->user->name;
+            $mylist['email_address'] = $json[0]->user->email;
+
         }
 
-        return $this;
+        $model->fill($mylist)->save();        
     }
 }
