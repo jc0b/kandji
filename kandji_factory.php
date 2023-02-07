@@ -8,6 +8,13 @@ $factory->define(Kandji_model::class, function (Faker\Generator $faker) {
     $userName = str_replace(' ', '.', str_replace('.', '', trim(strtolower($name))));
     $computerName = $names[1] . '\'s ' . 'Mac';
 
+    $passport_enabled => $faker->boolean();
+    if ($passport_enabled) {
+        $passport_users = $userName . ' : ' . $user_email;
+    } else {
+        $passport_users = '';
+    }
+
     return [
         'kandji_id' => $faker->unique()->regexify('[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}'),
         'name' => $computerName,
@@ -20,7 +27,7 @@ $factory->define(Kandji_model::class, function (Faker\Generator $faker) {
         'blueprint_name' => 'Kandji Blueprint',
         'realname' => $name,
         'email_address' => $user_email,
-        'passport_enabled' => $faker->randomElement(['True', 'False']),
-        'passport_users' => $userName . ' : ' . $user_email,
+        'passport_enabled' => $passport_enabled ? 'True' : 'False',
+        'passport_users' => $passport_users,
     ];
 });
