@@ -21,7 +21,7 @@ class Kandji extends Migration
     public function down()
     {
         $capsule = new Capsule();
-        $capsule::schema()->table($this->tableName) {
+        $capsule::schema()->table($this->tableName), function (Blueprint $table) {
             $table->dropColumn('passport_enabled');
             $table->dropColumn('passport_users');
         }
