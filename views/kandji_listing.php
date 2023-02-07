@@ -18,6 +18,7 @@ new Kandji_model;
             <th data-i18n="kandji.kandji_agent_version" data-colname='kandji.kandji_agent_version'></th>
             <th data-i18n="kandji.realname" data-colname='kandji.realname'></th>
             <th data-i18n="kandji.last_check_in" data-colname='kandji.last_check_in'></th>
+            <th data-i18n="kandji.passport_enabled" data-colname='kandji.passport_enabled'></th>
             <th data-i18n="kandji.last_enrollment" data-colname='kandji.last_enrollment'></th>
             <th data-i18n="kandji.kandji_id_short" data-colname='kandji.kandji_id'></th>
           </tr>
@@ -80,8 +81,8 @@ new Kandji_model;
 	        	$('td:eq(4)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 
 	        	// Format last_enrollment timestamp
-	        	var date = parseInt($('td:eq(5)', nRow).html())*1000;
-	        	$('td:eq(5)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	var date = parseInt($('td:eq(6)', nRow).html())*1000;
+	        	$('td:eq(6)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 	        }
 	    });
 	});

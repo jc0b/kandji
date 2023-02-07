@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Remove kandji script
-rm -f "${MUNKIPATH}preflight.d/kandji"
+rm -f "${MUNKIPATH}preflight.d/kandji.py"
 
-# Remove kandji.txt file
-rm -f "${CACHEPATH}kandji.txt"
+# Remove kandji.plist file
+rm -f "${CACHEPATH}kandji.plist"
