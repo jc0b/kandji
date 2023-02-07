@@ -18,6 +18,7 @@ new Kandji_model;
             <th data-i18n="kandji.kandji_agent_version" data-colname='kandji.kandji_agent_version'></th>
             <th data-i18n="kandji.realname" data-colname='kandji.realname'></th>
             <th data-i18n="kandji.last_check_in" data-colname='kandji.last_check_in'></th>
+            <th data-i18n="kandji.passport_enabled" data-colname='kandji.passport_enabled'></th>
             <th data-i18n="kandji.last_enrollment" data-colname='kandji.last_enrollment'></th>
             <th data-i18n="kandji.kandji_id_short" data-colname='kandji.kandji_id'></th>
           </tr>

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Kandji processor class
+ *
+ * @package munkireport
+ * @author jc0b
+ **/
+
 use CFPropertyList\CFPropertyList;
 use munkireport\processors\Processor;
 

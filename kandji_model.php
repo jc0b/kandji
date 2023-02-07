@@ -21,5 +21,7 @@ class Kandji_model extends Eloquent
       'blueprint_name',
       'realname',
       'email_address',
+      'passport_enabled',
+      'passport_users',
     ];
 }

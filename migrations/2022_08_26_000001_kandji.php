@@ -24,6 +24,8 @@ class Kandji extends Migration
             $table->text('blueprint_name')->nullable();
             $table->text('realname')->nullable();
             $table->string('email_address')->nullable();
+            $table->string('passport_enabled')->nullable();
+            $table->string('passport_users')->nullable();
         });
         
         // Make the indexes
@@ -35,6 +37,7 @@ class Kandji extends Migration
             $table->index('kandji_agent_version');
             $table->index('blueprint_id');
             $table->index('email_address');
+            $table->index('passport_enabled');
         });
     }
     
