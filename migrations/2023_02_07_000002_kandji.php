@@ -58,9 +58,7 @@ class Kandji extends Migration
                 blueprint_id,
                 blueprint_name,
                 realname,
-                email_address,
-                passport_enabled,
-                passport_users
+                email_address
             FROM
                 $this->tableNameV2");
             $capsule::schema()->drop($this->tableNameV2);
