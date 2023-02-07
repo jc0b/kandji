@@ -22,4 +22,8 @@ else
 	ERR=1
 fi
 
-
+# delete old Kandji module things
+rm -f "${CACHEPATH}kandji.txt"
+rm -f "${MUNKIPATH}preflight.d/kandji"
+rm -f "${MUNKIPATH}scripts/kandji"
+rm -f "${MUNKIPATH}postflight.d/kandji"

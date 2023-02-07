@@ -23,7 +23,6 @@ class Kandji_processor extends Processor
         $parser = new CFPropertyList();
         $parser->parse($plist, CFPropertyList::FORMAT_XML);
         $mylist = $parser->toArray();
-	echo "Parsed plist";
         // Retrieve Kandji MR record (if existing)
         try {
             $model = Kandji_model::select()
