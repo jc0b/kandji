@@ -6,7 +6,7 @@ $factory->define(Kandji_model::class, function (Faker\Generator $faker) {
     $name = $faker->name();
     $names = explode(" ", $name);
     $userName = str_replace(' ', '.', str_replace('.', '', trim(strtolower($name))));
-    $computerName = $names[1] . '\'s ' . 'Mac';
+    $computerName = $names[0] . '\'s ' . 'Mac';
 
     $passport_enabled = $faker->boolean();
     if ($passport_enabled) {
