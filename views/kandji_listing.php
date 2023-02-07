@@ -81,8 +81,8 @@ new Kandji_model;
 	        	$('td:eq(4)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 
 	        	// Format last_enrollment timestamp
-	        	var date = parseInt($('td:eq(5)', nRow).html())*1000;
-	        	$('td:eq(5)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
+	        	var date = parseInt($('td:eq(6)', nRow).html())*1000;
+	        	$('td:eq(6)', nRow).html('<span title="'+moment(date).format('llll')+'">'+moment(date).fromNow()+'</span>');
 	        }
 	    });
 	});
