@@ -6,17 +6,9 @@
  * @package munkireport
  * @author jc0b
  **/
-// use munkireport\module\machine\Machine_model;
-// use munkireport\module\kandji\kandji_processor as Kandji_processor;
 use munkireport\models\MRModel as Eloquent;
 
 use Illuminate\Support\Facades\DB;
-
-
-class Temp_machine_model extends Eloquent
-{
-    protected $table = 'machine';
-}
 
 class kandji_controller extends Module_controller
 {
@@ -91,20 +83,10 @@ class kandji_controller extends Module_controller
         // Returns either a list of all serial numbers in MunkiReport OR
         // a JSON of what serial number was just ran with the status of the run
         if ( $incoming_serial == ''){
-            require_once('/data/munkireport/vendor/munkireport/machine/machine_model.php');
+            require_once(__DIR__.'../vendor/munkireport/machine/machine_model.php');
             // Get all the serial numbers in an object
-            // $machine = new Kandji_model();
-            // $filter = get_machine_group_filter();
-
-            // $machinedata = Machine_model::selectRaw("serial_number")->filter()->get()->toArray();
 
             $machinedata = Machine_model::selectRaw("machine.serial_number")->filter()->get()->toArray();
-            // echo $machinedata;
-            // $sql = "SELECT machine.serial_number
-            //     FROM machine
-            //     LEFT JOIN reportdata USING (serial_number)
-            //     $filter";
-
             // Loop through each serial number for processing
             $out = array();
             foreach ($machinedata as $serialobj) {
