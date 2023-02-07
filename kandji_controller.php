@@ -91,14 +91,14 @@ class kandji_controller extends Module_controller
         // Returns either a list of all serial numbers in MunkiReport OR
         // a JSON of what serial number was just ran with the status of the run
         if ( $incoming_serial == ''){
-            require_once('/var/www/munkireport/vendor/munkireport/machine/machine_model.php');
+            require_once('/data/munkireport/vendor/munkireport/machine/machine_model.php');
             // Get all the serial numbers in an object
             // $machine = new Kandji_model();
             // $filter = get_machine_group_filter();
 
             // $machinedata = Machine_model::selectRaw("serial_number")->filter()->get()->toArray();
 
-            $machinedata = Temp_machine_model::selectRaw("machine.serial_number")->filter()->get()->toArray();
+            $machinedata = Machine_model::selectRaw("machine.serial_number")->filter()->get()->toArray();
             // echo $machinedata;
             // $sql = "SELECT machine.serial_number
             //     FROM machine
