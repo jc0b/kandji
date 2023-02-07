@@ -69,18 +69,4 @@ class Kandji_helper
 
         return $return;
     }
-
-
-    /**
-     * Convert Kandji timestamps to epochs
-     * 
-     * @return Unix epoch
-     * @author jc0b
-     * 
-     **/
-    private function convert_time_to_epoch($date)
-    {
-        $dt = new \DateTime($date);
-        return $dt->getTimestamp();
-    }
 }

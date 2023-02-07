@@ -59,7 +59,7 @@ def main():
     result = get_local_kandji_prefs()
     passport_users = get_passport_info()
     if len(passport_users) > 0:
-        result['passport_enabled'] = True
+        result['passport_enabled'] = "True"
         result['passport_users'] = passport_users
 
     # Write results to cache

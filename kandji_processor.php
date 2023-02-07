@@ -23,7 +23,7 @@ class Kandji_processor extends Processor
         $parser = new CFPropertyList();
         $parser->parse($plist, CFPropertyList::FORMAT_XML);
         $mylist = $parser->toArray();
-
+	echo "Parsed plist";
         // Retrieve Kandji MR record (if existing)
         try {
             $model = Kandji_model::select()
@@ -32,8 +32,6 @@ class Kandji_processor extends Processor
         } catch (\Throwable $th) {
             $model = new Kandji_model();
         }
-
-        $model->fill($mylist);
 
         // Check if we should enable Kandji lookup
         if (conf('kandji_enable')) {
@@ -48,9 +46,9 @@ class Kandji_processor extends Processor
             $mylist['asset_tag'] = $json[0]->asset_tag;
             $mylist['blueprint_id'] = $json[0]->blueprint_id;
             $mylist['blueprint_name'] = $json[0]->blueprint_name;
-            $mylist['last_check_in'] = $kandji_helper->convert_time_to_epoch($json[0]->last_check_in);
-            $mylist['last_enrollment'] = $kandji_helper->convert_time_to_epoch($json[0]->last_enrollment);
-            $mylist['first_enrollment'] = $kandji_helper->convert_time_to_epoch($json[0]->first_enrollment);
+            $mylist['last_check_in'] = $this->convert_time_to_epoch($json[0]->last_check_in);
+            $mylist['last_enrollment'] = $this->convert_time_to_epoch($json[0]->last_enrollment);
+            $mylist['first_enrollment'] = $this->convert_time_to_epoch($json[0]->first_enrollment);
 
             // Location section
             $mylist['realname'] = $json[0]->user->name;
@@ -60,4 +58,17 @@ class Kandji_processor extends Processor
 
         $model->fill($mylist)->save();        
     }
+
+	/**
+     * Convert Kandji timestamps to epochs
+     *
+     * @return Unix epoch
+     * @author jc0b
+     *
+     **/
+    private function convert_time_to_epoch($date)
+    {
+        $dt = new \DateTime($date);
+        return $dt->getTimestamp();
+    }	
 }
