@@ -1,0 +1,14 @@
+type: button
+widget_id: kandji_passport-widget
+api_url: /module/kandji/get_passport_stats
+i18n_title: kandji.passport_stats
+icon: fa-key
+listing_link: /show/listing/kandji/kandji
+i18n_empty_result: no_data
+buttons:
+  - label: yellow
+    i18n_label: kandji.disabled
+    class: btn-warning
+  - label: green
+    i18n_label: kandji.enabled
+    class: btn-success

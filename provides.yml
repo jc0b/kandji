@@ -22,3 +22,5 @@ widgets:
         view: kandji_agent_version_widget
     kandji_checkin:
         view: kandji_checkin_widget
+    kandji_passport:
+        view: kandji_passport_widget
