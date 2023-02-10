@@ -72,6 +72,23 @@ class kandji_controller extends Module_controller
      }
 
     /**
+    * REST API for retrieving stats on passport enablement
+    *
+    * @author jc0b
+    **/
+    public function get_passport_stats()
+    {        
+        $passport_data = Kandji_model::selectRaw("COALESCE(SUM(case when passport_enabled = 'True' THEN 1 END), 0) AS enabled, 
+            COALESCE(SUM(case when passport_enabled = 'False' THEN 1 END), 0) AS disabled")
+        ->filter()
+        ->first()
+        ->toLabelCount();
+
+        $obj = new View();
+        $obj->view('json', array('msg' => $passport_data));
+    }
+
+    /**
      * Pull in Kandji data for all serial numbers :D
      *
      * @return void
