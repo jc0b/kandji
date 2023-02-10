@@ -6,9 +6,9 @@ icon: fa-key
 listing_link: /show/listing/kandji/kandji
 i18n_empty_result: no_data
 buttons:
-  - label: yellow
+  - label: disabled
     i18n_label: kandji.disabled
     class: btn-warning
-  - label: green
+  - label: enabled
     i18n_label: kandji.enabled
     class: btn-success
