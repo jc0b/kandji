@@ -79,7 +79,7 @@ class kandji_controller extends Module_controller
     public function get_passport_stats()
     {        
         $passport_data = Kandji_model::selectRaw("COALESCE(SUM(case when passport_enabled = 'True' THEN 1 END), 0) AS enabled, 
-            COALESCE(SUM(case when passport_enabled = 'False' THEN 1 END), 0) AS disabled")
+            COALESCE(SUM(case when passport_enabled <> 'True' THEN 1 END), 0) AS disabled")
         ->filter()
         ->first()
         ->toLabelCount();
