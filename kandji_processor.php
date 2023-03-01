@@ -39,7 +39,7 @@ class Kandji_processor extends Processor
             // Load Kandji helper
             require_once($module_dir.'/lib/kandji_helper.php');
             $kandji_helper = new munkireport\module\kandji\kandji_helper;
-            $json = $kandji_helper->pull_kandji_data($model);
+            $json = $kandji_helper->pull_kandji_data($this->serial_number);
 
             // Transpose Kandji API output into Kandji model
             // General section 
