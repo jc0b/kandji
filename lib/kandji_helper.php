@@ -11,7 +11,7 @@ class Kandji_helper
      * @param object Kandji machine instance
      * @author jc0b
      **/
-    public function pull_kandji_data(&$Kandji_machine)
+    public function pull_kandji_data($serial_number)
     {
         // Error message
         $error = '';
@@ -20,7 +20,7 @@ class Kandji_helper
         $kandji_api_endpoint = rtrim(conf('kandji_api_endpoint'), '/');
 
         // Get computer data from Kandji
-        $url = "{$kandji_api_endpoint}/api/v1/devices/?serial_number={$Kandji_machine->serial_number}";
+        $url = "{$kandji_api_endpoint}/api/v1/devices/?serial_number={$serial_number}";
         $kandji_computer_result = $this->send_kandji_query($url);
 
         if(! $kandji_computer_result){
