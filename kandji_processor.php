@@ -23,6 +23,8 @@ class Kandji_processor extends Processor
         $parser = new CFPropertyList();
         $parser->parse($plist, CFPropertyList::FORMAT_XML);
         $mylist = $parser->toArray();
+
+        $mylist['serial_number'] = $this->serial_number;
         // Retrieve Kandji MR record (if existing)
         try {
             $model = Kandji_model::select()
