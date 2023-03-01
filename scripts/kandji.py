@@ -20,7 +20,6 @@ def get_local_kandji_prefs():
     return result
 
 def get_users_info():
-
     # Get all users info as plist
     cmd = ['/usr/bin/dscl', '-plist', '.', '-readall', '/Users']
     proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
