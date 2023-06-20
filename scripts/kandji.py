@@ -6,6 +6,7 @@ import sys
 import plistlib
 import json
 import time
+import importlib
 
 sys.path.insert(0, '/usr/local/munki')
 sys.path.insert(0, '/usr/local/munkireport')
@@ -50,10 +51,6 @@ def get_passport_info():
 def main():
     """Main"""
 
-    # Set the encoding
-    reload(sys)
-    sys.setdefaultencoding('utf8')
-
     # Get results
     result = get_local_kandji_prefs()
     passport_users = get_passport_info()
@@ -64,7 +61,11 @@ def main():
     # Write results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
     output_plist = os.path.join(cachedir, 'kandji.plist')
-    plistlib.writePlist(result, output_plist)
+        try:
+        plistlib.writePlist(result, output_plist)
+    except:
+        with open(output_plist, 'wb') as fp:
+            plistlib.dump(result, fp, fmt=plistlib.FMT_XML)
 
 if __name__ == "__main__":
     main()
