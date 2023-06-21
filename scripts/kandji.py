@@ -1,4 +1,4 @@
-#!/usr/local/munkireport/munkireport-python2
+#!/usr/local/munkireport/munkireport-python3
 
 import subprocess, re
 import os
@@ -17,7 +17,9 @@ def get_local_kandji_prefs():
     result = dict()
     result['kandji_agent_version'] = CFPreferencesCopyAppValue('AgentVersion', 'io.kandji.Kandji')
     result['blueprint_name'] = CFPreferencesCopyAppValue('Blueprint', 'io.kandji.Kandji')
-    result['kandji_id'] = CFPreferencesCopyAppValue('ComputerURL', 'io.kandji.Kandji').split('/')[-1]
+    result['kandji_id'] = CFPreferencesCopyAppValue('ComputerURL', 'io.kandji.Kandji')
+    if result['kandji_id'] is not None:
+        result['kandji_id'] = result['kandji_id'].split('/')[-1]
     return result
 
 def get_users_info():
@@ -51,6 +53,10 @@ def get_passport_info():
 def main():
     """Main"""
 
+    if not os.path.isfile('/Library/Kandji/Kandji Agent.app/Contents/MacOS/kandji-cli'):
+        print("ERROR: The Kandji agent is not installed")
+        exit(0)
+
     # Get results
     result = get_local_kandji_prefs()
     passport_users = get_passport_info()
@@ -61,7 +67,7 @@ def main():
     # Write results to cache
     cachedir = '%s/cache' % os.path.dirname(os.path.realpath(__file__))
     output_plist = os.path.join(cachedir, 'kandji.plist')
-        try:
+    try:
         plistlib.writePlist(result, output_plist)
     except:
         with open(output_plist, 'wb') as fp:
