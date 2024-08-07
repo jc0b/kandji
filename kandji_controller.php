@@ -116,11 +116,11 @@ class kandji_controller extends Module_controller
 
             $kandji = new Kandji_model();
             $kandji->serial_number = $incoming_serial;
-            $kandji->kandji_id = 0;
+            $kandji->device_id = "00000000-0000-0000-0000-000000000000";
             $kandji_status = $this->run_kandji_stats($kandji);
 
             // Check if machine exists in Kandji
-            if ($kandji->kandji_id == 0 ){
+            if ($kandji->device_id == "00000000-0000-0000-0000-000000000000" ){
                 $out = array("serial"=>$incoming_serial,"status"=>"Machine not found in Kandji!");
             } else {
                 $out = array("serial"=>$incoming_serial,"status"=>"Machine processed");

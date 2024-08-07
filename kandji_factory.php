@@ -16,7 +16,7 @@ $factory->define(Kandji_model::class, function (Faker\Generator $faker) {
     }
 
     return [
-        'kandji_id' => $faker->unique()->regexify('[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}'),
+        'device_id' => $faker->unique()->regexify('[A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12}'),
         'name' => $computerName,
         'kandji_agent_version' => $faker->randomElement(['3.3.0.607', '3.2.0.557', '3.1.6.469']),
         'asset_tag' => $faker->unique()->regexify('[0-9]{8}'),

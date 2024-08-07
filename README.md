@@ -24,7 +24,7 @@ Table Schema
 ---
 * id - increments - Incremental value used by MunkiReport
 * serial_number - string - Serial number of Mac
-* kandji_id - integer - Kandji ID of Mac
+* device_id - string - Kandji ID of Mac
 * name - string - Name of Mac in Kandji
 * kandji_agent_version - string - Kandji agent version
 * asset_tag - text - Kandji asset tag

@@ -10,7 +10,7 @@ $(document).on('appReady', function(){
         formatted_data.push(data)
         data = formatted_data
         // Check if we have data
-        if( ! data[0]['kandji_id']){
+        if( ! data[0]['device_id']){
             $('#kandji-msg').text(i18n.t('no_data'));
         }else{
 
@@ -21,7 +21,7 @@ $(document).on('appReady', function(){
             var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
             
             // Generate buttons and tabs
-            $('#kandji_view_in').html('<a data-i18n-"kandji.view_in_kandji" class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+data[0]['kandji_id']+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">View in Kandji</a>'); // View in Kandji button
+            $('#kandji_view_in').html('<a data-i18n-"kandji.view_in_kandji" class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+data[0]['device_id']+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">View in Kandji</a>'); // View in Kandji button
 
             var skipThese = ['id','serial_number'];
             $.each(data, function(i,d){

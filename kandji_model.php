@@ -10,7 +10,7 @@ class Kandji_model extends Eloquent
 
     protected $fillable = [
       'serial_number',
-      'kandji_id',
+      'device_id',
       'name',
       'kandji_agent_version',
       'asset_tag',

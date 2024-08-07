@@ -17,9 +17,9 @@ def get_local_kandji_prefs():
     result = dict()
     result['kandji_agent_version'] = CFPreferencesCopyAppValue('AgentVersion', 'io.kandji.Kandji')
     result['blueprint_name'] = CFPreferencesCopyAppValue('Blueprint', 'io.kandji.Kandji')
-    result['kandji_id'] = CFPreferencesCopyAppValue('ComputerURL', 'io.kandji.Kandji')
-    if result['kandji_id'] is not None:
-        result['kandji_id'] = result['kandji_id'].split('/')[-1]
+    result['device_id'] = CFPreferencesCopyAppValue('ComputerURL', 'io.kandji.Kandji')
+    if result['device_id'] is not None:
+        result['device_id'] = result['device_id'].split('/')[-1]
     return result
 
 def get_users_info():

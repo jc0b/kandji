@@ -20,7 +20,7 @@ new Kandji_model;
             <th data-i18n="kandji.last_check_in" data-colname='kandji.last_check_in'></th>
             <th data-i18n="kandji.passport_enabled" data-colname='kandji.passport_enabled'></th>
             <th data-i18n="kandji.last_enrollment" data-colname='kandji.last_enrollment'></th>
-            <th data-i18n="kandji.kandji_id_short" data-colname='kandji.kandji_id'></th>
+            <th data-i18n="kandji.device_id_short" data-colname='kandji.device_id'></th>
           </tr>
         </thead>
         <tbody>
@@ -57,7 +57,7 @@ new Kandji_model;
                 url: appUrl + '/datatables/data',
                 type: "POST",
                 data: function(d){
-                    d.mrColNotEmpty = "kandji.kandji_id"
+                    d.mrColNotEmpty = "kandji.device_id"
                 }
             },
             dom: mr.dt.buttonDom,
@@ -71,9 +71,9 @@ new Kandji_model;
 	        	$('td:eq(0)', nRow).html(link);
 	        	// Make serial number in second column link to Kandji
 	        	var serial=$('td:eq(1)', nRow).html();
-	        	var kandji_id=$('td:eq(7)', nRow).html();
+	        	var device_id=$('td:eq(7)', nRow).html();
             var kandji_tenant_address = "<?php configAppendFile(__DIR__ . '/../config.php'); echo rtrim(conf('kandji_tenant_address'), '/'); ?>"; // Get the Kandji server address
-	        	var link = '<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+kandji_id+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">'+serial+'</a>';
+	        	var link = '<a class="btn btn-default btn-xs" href="'+kandji_tenant_address+'/devices/'+device_id+'" target="_blank" title="'+i18n.t('kandji.view_in_kandji')+'">'+serial+'</a>';
 	        	$('td:eq(1)', nRow).html(link);
 
 	        	// Format last_check_in timestamp
