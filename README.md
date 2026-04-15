@@ -18,8 +18,8 @@ To enable the module add the following information to the `.env` file.
 
 ```sh
 KANDJI_ENABLE="TRUE"
-KANDJI_API_ENDPOINT="https://domain.clients.kandji.io/"
-KANDJI_API_KEY="some_key_here"
+KANDJI_API_ENDPOINT="https://domain.api.kandji.io/"
+KANDJI_API_KEY="API_key_here"
 KANDJI_TENANT_ADDRESS="https://domain.kandji.io/"
 ```
 
