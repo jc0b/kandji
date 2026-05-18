@@ -8,7 +8,6 @@ import json
 import time
 import importlib
 
-sys.path.insert(0, '/usr/local/munki')
 sys.path.insert(0, '/usr/local/munkireport')
 
 from Foundation import CFPreferencesCopyAppValue
